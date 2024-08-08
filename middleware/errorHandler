@@ -1,0 +1,11 @@
+const errorHandler = require("express-async-handler");
+
+const errorHandlers = (error, req, res, next) => {
+    res.status(error.status || 500).json({
+        status: error.status,
+        success: false,
+        message: error.message || "Internal Server Error"
+    })
+}
+
+module.exports = errorHandlers;
